@@ -46,8 +46,10 @@ let winnerName = document.getElementById("winner player-name");
 *** APP
 **********************************************/
 
+//Initialize Game
+newGame();
 
-//Initialize New Game
+//New Game Button
 document.querySelector('.btn-new').addEventListener('click', newGame);
 
 //Roll Dice Button
