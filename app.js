@@ -12,15 +12,26 @@ GAME RULES:
 var currentPlayer = 1;
 var globalScore1 = 0;
 var globalScore2 = 0;
-var currentScore1 = 0;
-var currentScore2 = 0;
+var currentScore1 = 98;
+var currentScore2 = 50;
+
 let dicePNG = document.querySelector("body > div > img.dice");
+
 let playerOneScore = document.querySelector("#score-0");
+
 let playerTwoScore = document.querySelector("#score-1");
+
 let playerOneRoundScore = document.querySelector("#current-0");
+
 let playerTwoRoundScore = document.querySelector("#current-1");
+
 let player1Panel = document.querySelector("body > div > div.player-0-panel");
+
 let player2Panel = document.querySelector("body > div > div.player-1-panel");
+
+let modal = document.getElementById("popup1");
+
+let winnerName = document.getElementById("winner player-name");
 
 document.querySelector('.btn-new').addEventListener('click', newGame);
 
@@ -32,7 +43,11 @@ playerTwoScore.innerHTML = globalScore2;
 
 playerOneRoundScore.innerHTML = currentScore1;
 playerTwoRoundScore.innerHTML = currentScore2;
+
 checkActivePlayer();
+
+
+
 function checkActivePlayer() {
 
     if (currentPlayer === 1) {
@@ -75,8 +90,10 @@ holdBtn.addEventListener(
     function (e) {
         togglePlayer();
         checkActivePlayer();
+        checkWinner();
     }
 );
+
 rollBtn.addEventListener(
     'click',
     function (e) {
@@ -112,9 +129,11 @@ rollBtn.addEventListener(
                 currentScore1 += diceValue;
                 playerOneRoundScore.innerHTML = currentScore1;
                 break;
-        }
 
+        }
+        checkWinner();
     }
+
 );
 
 function randomDice() {
@@ -125,7 +144,35 @@ function randomDice() {
     return randomDice;
 }
 
+
 //Hold Button
-document.querySelector('.btn-hold').addEventListener('click', function() {
-    
+document.querySelector('.btn-hold').addEventListener('click', function () {
+
 })
+
+function checkWinner() {
+    if (currentScore1 >= 100 || currentScore2 >= 100) {
+        if (currentScore1 > currentScore2) {
+            congratulations("Player 1");
+        }
+        else {
+            congratulations("Player 2");
+        }
+    }
+}
+
+function congratulations(playerName) {
+    winnerName.textContent = playerName;
+    // show congratulations modal
+    modal.classList.add("show");
+
+    //closeicon on modal
+    closeModal();
+}
+
+// @desciption for user to play Again 
+function playAgain() {
+    modal.classList.remove("show");
+    newGame();
+}
+
