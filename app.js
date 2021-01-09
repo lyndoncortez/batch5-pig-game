@@ -34,3 +34,7 @@ function newGame() {
     playerTwoRoundScore.innerHTML = "0";
 }
 
+//Hold Button
+document.querySelector('.btn-hold').addEventListener('click', function() {
+    
+})
