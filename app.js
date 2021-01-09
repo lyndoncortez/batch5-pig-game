@@ -9,8 +9,14 @@ GAME RULES:
 
 */
 
+
 var globalScore;
 var currentScore;
+let dicePNG = document.querySelector("body > div > img");
+let playerOneScore = document.querySelector("#score-0");
+let playerTwoScore = document.querySelector("#score-1");
+let playerOneRoundScore = document.querySelector("#current-0");
+let playerTwoRoundScore = document.querySelector("#current-1");
 
 //New Game
 document.querySelector('.btn-new').addEventListener('click', newGame);
@@ -19,10 +25,12 @@ function newGame() {
     globalScore = 0;
     currentScore = 0;
 
-    document.querySelector('.dice').src = "dice-1.png";
-    document.getElementById('score-0').innerHTML = "0";
-    document.getElementById('score-1').innerHTML = "0";
-    document.getElementById('current-0').innerHTML = "0";
-    document.getElementById('current-1').innerHTML = "0";
+    dicePNG.src = "dice-1.png";
+
+    playerOneScore.innerHTML = "0";
+    playerTwoScore.innerHTML = "0";
+
+    playerOneRoundScore.innerHTML = "0";
+    playerTwoRoundScore.innerHTML = "0";
 }
 
