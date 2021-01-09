@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,600" rel="stylesheet" type="text/css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
         <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
         <link type="text/css" rel="stylesheet" href="style.css">
         
@@ -34,8 +36,22 @@
             <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
             
             <img src="dice-5.png" alt="Dice" class="dice">
+
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <h2 style="text-align: center;">Congratulations 🎉</h2>
+    
+                    <div class="content-1">
+                        <span id="winner player-name">Player 1</span>
+                    </div>
+    
+                    <button id="play-again" onclick="playAgain()">
+                        Play again</a>
+                    </button>
+                </div>
+            </div>
         </div>
-        
+    </div>
         <script src="app.js"></script>
     </body>
 </html>
