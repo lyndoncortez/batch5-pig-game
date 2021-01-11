@@ -37,7 +37,11 @@ let player2Panel = document.querySelector("body > div > div.player-1-panel");
 
 let modal = document.getElementById("popup1");
 
-let winnerName = document.getElementById("winner player-name");
+let winnerName;
+
+let playerName;
+
+
 
 
 
@@ -62,7 +66,7 @@ rollBtn.addEventListener(
         diceObject.src = "dice-" + randomDice + ".png";
         if (randomDice !== 1) {
             roundScore += randomDice;
-            document.querySelector('#current-' + currentPlayer).innerHTML = roundScore;
+            document.querySelector('#score-' + currentPlayer).innerHTML = roundScore;
         } else {
             nextPlayer();
         }
@@ -75,8 +79,13 @@ holdBtn.addEventListener(
     'click',
     function() {
         globalScore[currentPlayer] += roundScore;
-        document.querySelector('#score-' + currentPlayer).innerHTML = globalScore[currentPlayer];
-        checkWinner();
+        document.querySelector('#current-' + currentPlayer).innerHTML = globalScore[currentPlayer];
+        playerName = document.querySelector('#name-' + currentPlayer).innerHTML;
+        if (globalScore[currentPlayer] >= 100) {
+            congratulations(playerName);
+        } else {
+            nextPlayer();
+        }
     }
 );
 
@@ -110,25 +119,15 @@ function nextPlayer() {
     }
 
     roundScore = 0;
-    playerOneRoundScore.innerHTML = "0";
-    playerTwoRoundScore.innerHTML = "0";
+    playerOneScore.innerHTML = "0";
+    playerTwoScore.innerHTML = "0";
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 }
 
 
-
-function checkWinner() {
-    let playerName = document.querySelector('.player-name').innerHTML;
-    if (globalScore[currentPlayer] >= 100) {
-        congratulations(playerName);
-    } else {
-        nextPlayer();
-    }
-}
-
 function congratulations(playerName) {
-    winnerName.textContent = playerName;
+    document.getElementById("winner").innerHTML = playerName;
     // show congratulations modal
     modal.classList.add("show");
 
